@@ -1,0 +1,246 @@
+.mockPage{
+    min-height:100vh;
+    padding:40px;
+    background:linear-gradient(135deg,#eef5ff,#ffffff,#f5f9ff);
+    font-family:"Poppins",sans-serif;
+}
+
+.mockHero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.mockHero h1{
+    font-size:48px;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.mockHero p{
+    color:#64748b;
+    font-size:18px;
+}
+
+.mockCard{
+    max-width:700px;
+    margin:0 auto 40px;
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.mockCard input,
+.mockCard select{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:1px solid #dbeafe;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+    transition:.3s;
+}
+
+.mockCard input:focus,
+.mockCard select:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 8px rgba(37,99,235,.25);
+}
+
+.mockCard button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.mockCard button:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+.questionBox{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.questionBox h2{
+    color:#2563eb;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.questionBox pre{
+    white-space:pre-wrap;
+    line-height:1.9;
+    color:#334155;
+    font-size:16px;
+}
+
+@media(max-width:768px){
+
+.mockPage{
+    padding:20px;
+}
+
+.mockHero h1{
+    font-size:34px;
+}
+
+.mockHero p{
+    font-size:16px;
+}
+
+.mockCard{
+    padding:20px;
+}
+
+.questionBox{
+    padding:20px;
+}
+
+}
+/* ================= QUESTION ================= */
+
+.questionText{
+    font-size:26px;
+    font-weight:600;
+    color:#1e293b;
+    margin:25px 0;
+    line-height:1.6;
+}
+
+/* ================= TEXTAREA ================= */
+
+.answerBox{
+
+    width:100%;
+    min-height:180px;
+    padding:18px;
+    border:2px solid #dbeafe;
+    border-radius:15px;
+    outline:none;
+    font-size:16px;
+    resize:vertical;
+    transition:.3s;
+    margin-top:20px;
+
+}
+
+.answerBox:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 12px rgba(37,99,235,.2);
+
+}
+
+/* ================= PROGRESS ================= */
+
+.progress{
+
+    width:100%;
+    height:12px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    margin-bottom:25px;
+
+}
+
+.progressFill{
+
+    height:100%;
+    background:linear-gradient(90deg,#2563eb,#60a5fa);
+    transition:.5s;
+
+}
+
+/* ================= BUTTONS ================= */
+
+.evaluateBtn{
+
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#16a34a;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.evaluateBtn:hover{
+
+    background:#15803d;
+
+}
+
+.nextBtn{
+
+    width:100%;
+    margin-top:18px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.nextBtn:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* ================= FEEDBACK ================= */
+
+.feedbackCard{
+
+    margin-top:30px;
+    background:#f8fbff;
+    border-left:6px solid #2563eb;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.feedbackCard h2{
+
+    color:#2563eb;
+    margin-bottom:15px;
+
+}
+
+.feedbackCard h3{
+
+    color:#16a34a;
+    margin-bottom:15px;
+
+}
+
+.feedbackCard pre{
+
+    white-space:pre-wrap;
+    line-height:1.8;
+    font-size:15px;
+
+}

@@ -1,0 +1,202 @@
+.roadmapPage{
+  min-height:100vh;
+  padding:40px;
+  background:linear-gradient(135deg,#eef5ff,#f8fbff,#ffffff);
+  font-family:"Poppins",sans-serif;
+}
+
+.roadmapHero{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.roadmapHero h1{
+  font-size:48px;
+  color:#2563eb;
+  margin-bottom:15px;
+}
+
+.roadmapHero p{
+  font-size:18px;
+  color:#475569;
+  width:70%;
+  margin:auto;
+  line-height:1.6;
+}
+
+.careerGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+  margin-bottom:45px;
+}
+
+.careerCard{
+  background:#ffffff;
+  border-radius:20px;
+  padding:30px;
+  border:1px solid #dbeafe;
+  box-shadow:0 12px 30px rgba(37,99,235,.12);
+  transition:.35s;
+  cursor:pointer;
+}
+
+.careerCard:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(37,99,235,.20);
+}
+
+.careerCard h2{
+  color:#2563eb;
+  margin-bottom:15px;
+}
+
+.careerCard p{
+  color:#64748b;
+  margin-bottom:20px;
+  line-height:1.6;
+}
+
+.careerCard button{
+  border:none;
+  background:#2563eb;
+  color:white;
+  padding:12px 24px;
+  border-radius:30px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.careerCard button:hover{
+  background:#1dd8d8;
+}
+
+.roadmapBox{
+  background:#c90ca9;;
+  border-radius:20px;
+  padding:35px;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+  animation:fade .4s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.roadmapBox h1{
+  text-align:center;
+  color:#2563eb;
+  margin-bottom:20px;
+}
+
+.salary{
+  background:linear-gradient(135deg,#2563eb,#3b82f6);
+  color:rgb(43, 56, 6);
+  text-align:center;
+  padding:16px;
+  border-radius:14px;
+  font-size:20px;
+  margin-bottom:35px;
+  font-weight:600;
+}
+
+.section{
+  margin-bottom:35px;
+}
+
+.section h2{
+  color:#1e293b;
+  border-left:5px solid #2563eb;
+  padding-left:12px;
+  margin-bottom:18px;
+}
+
+.section ul{
+  list-style:none;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.section li{
+  background:#effff2;
+  border-radius:12px;
+  padding:15px;
+  transition:.3s;
+}
+
+.section li:hover{
+  background:#2563eb;
+  color:white;
+}
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.projectCard{
+  background:#f8fafc;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+  transition:.3s;
+}
+
+.projectCard:hover{
+  transform:translateY(-6px);
+}
+
+.resources{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.resource{
+  background:#2563eb;
+  color:white;
+  padding:10px 18px;
+  border-radius:30px;
+}
+
+.interview{
+  background:#eff6ff;
+  border-left:5px solid #2563eb;
+  padding:25px;
+  border-radius:15px;
+}
+
+.interview li{
+  color:#1e293b;
+  margin:10px 0;
+}
+
+@media(max-width:768px){
+
+.roadmapPage{
+padding:20px;
+}
+
+.roadmapHero h1{
+font-size:34px;
+}
+
+.roadmapHero p{
+width:100%;
+font-size:16px;
+}
+
+.roadmapBox{
+padding:20px;
+}
+
+}

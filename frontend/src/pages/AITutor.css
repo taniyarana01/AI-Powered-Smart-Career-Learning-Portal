@@ -1,0 +1,124 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+.tutorPage{
+  min-height:100vh;
+  padding:40px;
+  background:linear-gradient(135deg,#eef5ff,#f8fbff,#ffffff);
+}
+
+.tutorHero{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.tutorHero h1{
+  font-size:50px;
+  color:#2563eb;
+  margin-bottom:12px;
+}
+
+.tutorHero p{
+  font-size:18px;
+  color:#64748b;
+}
+
+.tutorCard{
+  max-width:700px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.tutorCard input{
+  width:100%;
+  padding:16px;
+  border:2px solid #dbeafe;
+  border-radius:12px;
+  outline:none;
+  font-size:17px;
+  margin-bottom:20px;
+  transition:.3s;
+}
+
+.tutorCard input:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 10px rgba(37,99,235,.2);
+}
+
+.tutorCard button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#2563eb;
+  color:white;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.tutorCard button:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+}
+
+.lessonCard{
+  max-width:1000px;
+  margin:40px auto;
+  background:white;
+  border-radius:20px;
+  padding:35px;
+  box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.lessonCard pre{
+  white-space:pre-wrap;
+  line-height:1.9;
+  font-size:16px;
+  color:#334155;
+}
+
+.lessonCard h2{
+  color:#2563eb;
+  margin:25px 0 15px;
+}
+
+.lessonCard ul{
+  margin-left:25px;
+}
+
+.lessonCard li{
+  margin:10px 0;
+}
+
+@media(max-width:768px){
+
+.tutorPage{
+  padding:20px;
+}
+
+.tutorHero h1{
+  font-size:36px;
+}
+
+.tutorHero p{
+  font-size:16px;
+}
+
+.tutorCard{
+  padding:20px;
+}
+
+.lessonCard{
+  padding:20px;
+}
+
+}
