@@ -13,7 +13,7 @@ export default function App() {
       {/* HERO */}
       <div className="hero">
         <h1>
-          AI Powered Smart Learning Platform 🚀
+          AI Powered Smart Learning Platform 
         </h1>
 
         <p>

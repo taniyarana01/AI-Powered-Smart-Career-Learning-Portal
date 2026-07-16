@@ -157,6 +157,7 @@ router.get("/my", protect, async (req, res) => {
     });
   }
 });
+
 // Delete Resume
 router.delete("/:id", protect, async (req, res) => {
   try {
@@ -208,7 +209,7 @@ router.get("/:id", protect, async (req, res) => {
   }
 });
 
-/*update*/
+
 // Update Resume
 router.put("/:id", protect, async (req, res) => {
   try {

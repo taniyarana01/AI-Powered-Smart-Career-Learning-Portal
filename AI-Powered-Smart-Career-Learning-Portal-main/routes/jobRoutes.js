@@ -6,7 +6,7 @@ import OpenAI from "openai";
 
 const router = express.Router();
 
-// ✅ Add Job (with NLP skill extraction)
+//  Add Job 
 router.post("/", protect, async (req, res) => {
   try {
     const { title, description, company, location } = req.body;
@@ -23,7 +23,7 @@ router.post("/", protect, async (req, res) => {
   }
 });
 
-// ✅ Get Recommended Jobs for Logged-in User
+//  Recommended Jobs for Logged-in User
 router.get("/recommend", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -52,7 +52,7 @@ router.get("/recommend", protect, async (req, res) => {
   }
 });
 
-// 🧠 Extract Skills using OpenAI Embeddings
+//  Extract Skills using OpenAI Embeddings
 async function extractSkillsNLP(text) {
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
@@ -76,7 +76,7 @@ async function extractSkillsNLP(text) {
   );
 }
 
-// 📊 Cosine Similarity Helper
+// Cosine Similarity Helper
 function cosineSimilarity(vecA, vecB) {
   let dot = 0.0, normA = 0.0, normB = 0.0;
   for (let i = 0; i < vecA.length; i++) {
@@ -87,7 +87,7 @@ function cosineSimilarity(vecA, vecB) {
   return dot / (Math.sqrt(normA) * Math.sqrt(normB));
 }
 
-// 📈 Job Matching Function
+// Job Matching Function
 async function calculateJobMatch(userSkills, jobSkills) {
   if (!Array.isArray(userSkills) || !Array.isArray(jobSkills) || jobSkills.length === 0)
     return 0;

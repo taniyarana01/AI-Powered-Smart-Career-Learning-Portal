@@ -112,4 +112,4 @@ Experience: ${resumeData?.experience}
   );
 };
 
-export default AIAnalysis;
+export default AIAnalysis; 
