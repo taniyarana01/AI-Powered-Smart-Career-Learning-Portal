@@ -1,177 +1,318 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.skillPage{
-    min-height:100vh;
-    padding:40px;
-    background:linear-gradient(135deg,#eef5ff,#f8fbff,#ffffff);
+/* =========================
+   SKILL PAGE
+========================= */
+
+.skillPage {
+  min-height: 100vh;
+  padding: 55px 7%;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.08), transparent 30%),
+    radial-gradient(circle at 90% 20%, rgba(96, 165, 250, 0.08), transparent 30%),
+    linear-gradient(135deg, #f8fbff, #eef5ff, #ffffff);
 }
 
-.skillPage h1{
-    text-align:center;
-    color:#2563eb;
-    font-size:45px;
-    margin-bottom:35px;
+/* =========================
+   HEADING
+========================= */
+
+.skillPage h1 {
+  text-align: center;
+  color: #172554;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
 }
 
-.skillInput{
-    max-width:800px;
-    margin:auto;
-    display:flex;
-    gap:15px;
-    margin-bottom:30px;
+.skillPage h1::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
 }
 
-.skillInput input{
-    flex:1;
-    padding:15px;
-    border:2px solid #dbeafe;
-    border-radius:12px;
-    outline:none;
-    font-size:16px;
-    transition:.3s;
+/* =========================
+   INPUT SECTION
+========================= */
+
+.skillInput {
+  max-width: 850px;
+  margin: 0 auto 35px;
+  display: flex;
+  gap: 14px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.08);
+  backdrop-filter: blur(12px);
 }
 
-.skillInput input:focus{
-    border-color:#2563eb;
-    box-shadow:0 0 10px rgba(37,99,235,.2);
+.skillInput input {
+  flex: 1;
+  padding: 16px 18px;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: #172554;
 }
 
-.skillInput button{
-    padding:15px 28px;
-    border:none;
-    border-radius:12px;
-    background:#2563eb;
-    color:white;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
+.skillInput input::placeholder {
+  color: #94a3b8;
 }
 
-.skillInput button:hover{
-    background:#1d4ed8;
-    transform:translateY(-2px);
+.skillInput input:focus {
+  box-shadow: none;
 }
 
-.progressBar{
-    max-width:800px;
-    margin:25px auto;
-    height:18px;
-    background:#dbeafe;
-    border-radius:50px;
-    overflow:hidden;
+/* =========================
+   ADD BUTTON
+========================= */
+
+.skillInput button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22);
 }
 
-.progress{
-    height:100%;
-    background:linear-gradient(90deg,#2563eb,#60a5fa);
-    border-radius:50px;
-    transition:width .5s ease;
+.skillInput button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.3);
 }
 
-.skillPage h3{
-    text-align:center;
-    color:#2563eb;
-    margin-bottom:30px;
+.skillInput button:active {
+  transform: scale(0.97);
 }
 
-.skillList{
-    max-width:900px;
-    margin:auto;
+/* =========================
+   PROGRESS BAR
+========================= */
+
+.progressBar {
+  max-width: 850px;
+  margin: 0 auto 18px;
+  height: 16px;
+  background: #dbeafe;
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.06);
 }
 
-.skillCard{
-    background:white;
-    padding:18px 22px;
-    border-radius:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:18px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    transition:.3s;
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  border-radius: 50px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.3);
 }
 
-.skillCard:hover{
-    transform:translateY(-5px);
+/* =========================
+   SKILL COUNT / TITLE
+========================= */
+
+.skillPage h3 {
+  text-align: center;
+  color: #334155;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30px;
 }
 
-.skillCard span{
-    font-size:18px;
-    font-weight:500;
+/* =========================
+   SKILL LIST
+========================= */
+
+.skillList {
+  max-width: 950px;
+  margin: 0 auto;
 }
 
-.done{
-    text-decoration:line-through;
-    color:#16a34a;
-    font-weight:600;
+/* =========================
+   SKILL CARD
+========================= */
+
+.skillCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 22px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.skillCard div{
-    display:flex;
-    gap:10px;
+.skillCard::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #2563eb, #60a5fa);
+  opacity: 0;
+  transition: 0.3s;
 }
 
-.skillCard button{
-    border:none;
-    padding:10px 18px;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
-    transition:.3s;
+.skillCard:hover {
+  transform: translateY(-4px);
+  border-color: #bfdbfe;
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
 }
 
-.skillCard button:first-child{
-    background:#16a34a;
-    color:white;
+.skillCard:hover::before {
+  opacity: 1;
 }
 
-.skillCard button:first-child:hover{
-    background:#15803d;
+/* =========================
+   SKILL NAME
+========================= */
+
+.skillCard span {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
 }
 
-.delete{
-    background:#ef4444 !important;
-    color:white;
+/* Completed Skill */
+
+.done {
+  text-decoration: line-through;
+  color: #16a34a !important;
+  font-weight: 600;
 }
 
-.delete:hover{
-    background:#dc2626 !important;
+/* =========================
+   BUTTON CONTAINER
+========================= */
+
+.skillCard div {
+  display: flex;
+  gap: 10px;
 }
 
-@media(max-width:768px){
+/* =========================
+   CARD BUTTONS
+========================= */
 
-.skillPage{
-    padding:20px;
+.skillCard button {
+  border: none;
+  padding: 10px 17px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.25s ease;
 }
 
-.skillPage h1{
-    font-size:34px;
+/* Complete Button */
+
+.skillCard button:first-child {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
 }
 
-.skillInput{
-    flex-direction:column;
+.skillCard button:first-child:hover {
+  background: #16a34a;
+  color: white;
+  transform: translateY(-2px);
 }
 
-.skillCard{
-    flex-direction:column;
-    gap:15px;
-    align-items:flex-start;
+/* Delete Button */
+
+.delete {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
+  border: 1px solid #fecaca;
 }
 
-.skillCard div{
-    width:100%;
-    display:flex;
-    justify-content:space-between;
+.delete:hover {
+  background: #ef4444 !important;
+  color: white !important;
+  transform: translateY(-2px);
 }
 
-.skillCard button{
-    flex:1;
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .skillPage {
+    padding: 35px 20px;
+  }
+
+  .skillPage h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .skillInput {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .skillInput button {
+    width: 100%;
+  }
+
+  .skillCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .skillCard div {
+    width: 100%;
+  }
+
+  .skillCard button {
+    flex: 1;
+  }
 }
 
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .skillPage {
+    padding: 28px 15px;
+  }
+
+  .skillPage h1 {
+    font-size: 28px;
+  }
+
+  .skillCard span {
+    font-size: 15px;
+  }
+
+  .skillCard button {
+    padding: 9px 12px;
+    font-size: 13px;
+  }
 }

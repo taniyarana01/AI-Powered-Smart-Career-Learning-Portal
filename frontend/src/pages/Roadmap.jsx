@@ -1,191 +1,252 @@
 import React, { useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import "./Roadmap.css";
 
-const roadmapData = {
-  frontend: {
-    title: "Frontend Developer",
-    salary: "₹4 - ₹15 LPA",
-    beginner: ["HTML5", "CSS3", "JavaScript", "Git & GitHub"],
-    intermediate: ["React.js", "React Router", "Redux Toolkit", "REST APIs"],
-    advanced: ["Next.js", "TypeScript", "Testing", "Deployment"],
-    projects: [
-      "Portfolio Website",
-      "Netflix Clone",
-      "E-Commerce Website",
-      "Admin Dashboard",
-    ],
-    resources: ["MDN Docs", "freeCodeCamp", "React Official Docs"],
-    interview: [
-      "HTML/CSS",
-      "JavaScript",
-      "React",
-      "Projects Discussion",
-    ],
-  },
-
-  fullstack: {
-    title: "Full Stack Developer",
-    salary: "₹6 - ₹20 LPA",
-    beginner: ["HTML", "CSS", "JavaScript", "Git"],
-    intermediate: ["React", "Node.js", "Express", "MongoDB"],
-    advanced: ["JWT", "Docker", "AWS", "System Design"],
-    projects: ["Chat App", "LMS", "Job Portal", "E-Commerce"],
-    resources: ["MongoDB Docs", "Node Docs", "React Docs"],
-    interview: [
-      "MERN Stack",
-      "DBMS",
-      "Authentication",
-      "REST APIs",
-    ],
-  },
-
-  ai: {
-    title: "AI Engineer",
-    salary: "₹8 - ₹30 LPA",
-    beginner: ["Python", "NumPy", "Pandas", "Maths"],
-    intermediate: [
-      "Machine Learning",
-      "Scikit Learn",
-      "TensorFlow",
-    ],
-    advanced: [
-      "Deep Learning",
-      "LLMs",
-      "LangChain",
-      "Generative AI",
-    ],
-    projects: [
-      "Chatbot",
-      "Resume Analyzer",
-      "AI Notes Generator",
-      "Image Classifier",
-    ],
-    resources: [
-      "Kaggle",
-      "TensorFlow",
-      "HuggingFace",
-    ],
-    interview: [
-      "ML",
-      "Deep Learning",
-      "NLP",
-      "GenAI",
-    ],
-  },
-};
+const genAI = new GoogleGenerativeAI(
+  import.meta.env.VITE_GEMINI_API_KEY
+);
 
 export default function Roadmap() {
-  const [selected, setSelected] = useState(null);
+  const [role, setRole] = useState("");
+  const [level, setLevel] = useState("Fresher");
+  const [roadmap, setRoadmap] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const generateRoadmap = async () => {
+    if (!role.trim()) {
+      alert("Please enter a career role.");
+      return;
+    }
+
+    if (!import.meta.env.VITE_GEMINI_API_KEY) {
+      alert("Gemini API key is missing.");
+      return;
+    }
+
+    setLoading(true);
+    setRoadmap([]);
+
+    try {
+      const model = genAI.getGenerativeModel({
+        model: "gemini-2.5-flash",
+      });
+
+      const prompt = `
+You are an expert career mentor.
+
+Create a complete learning roadmap for:
+
+Career Role: ${role}
+Experience Level: ${level}
+
+Generate a practical roadmap for a student who wants to become job-ready.
+
+Include these stages:
+
+1. Fundamentals
+2. Core Technologies
+3. Advanced Skills
+4. Projects
+5. Interview Preparation
+6. Job Preparation
+
+For every stage provide:
+- Stage title
+- Skills to learn
+- Important topics
+- Project suggestions
+- Expected outcome
+
+Return ONLY valid JSON in this exact structure:
+
+[
+  {
+    "stage": "Stage Name",
+    "skills": ["skill 1", "skill 2"],
+    "topics": ["topic 1", "topic 2"],
+    "projects": ["project 1", "project 2"],
+    "outcome": "Expected outcome"
+  }
+]
+
+Do not use markdown.
+Do not use code blocks.
+`;
+
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+
+      const cleanedText = text
+        .replace(/```json/g, "")
+        .replace(/```/g, "")
+        .trim();
+
+      const parsedRoadmap = JSON.parse(cleanedText);
+
+      if (!Array.isArray(parsedRoadmap)) {
+        throw new Error("Invalid roadmap format");
+      }
+
+      setRoadmap(parsedRoadmap);
+    } catch (error) {
+      console.error("Roadmap generation error:", error);
+
+      alert(
+        "Unable to generate roadmap. Please check your Gemini API key and try again."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="roadmapPage">
-      <section className="hero">
-        <h1>🚀 Career Roadmaps</h1>
+
+      <section className="roadmapHero">
+        <span className="roadmapBadge">🤖 AI Powered</span>
+
+        <h1>AI Career Roadmap</h1>
+
         <p>
-          Select your dream career and explore a complete learning path from
-          beginner to professional.
+          Generate a personalized learning roadmap and become
+          job-ready with AI guidance.
         </p>
       </section>
 
-      <div className="careerGrid">
-        <div
-          className="careerCard"
-          onClick={() => setSelected(roadmapData.frontend)}
-        >
-          <h2>🌐 Frontend Developer</h2>
-          <p>HTML • CSS • JavaScript • React</p>
-          <button>View Roadmap</button>
+      <section className="roadmapGenerator">
+
+        <div className="inputGroup">
+          <label>Career Role</label>
+
+          <input
+            type="text"
+            placeholder="e.g. Full Stack Developer"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          />
         </div>
 
-        <div
-          className="careerCard"
-          onClick={() => setSelected(roadmapData.fullstack)}
-        >
-          <h2>💻 Full Stack Developer</h2>
-          <p>MERN Stack Development</p>
-          <button>View Roadmap</button>
-        </div>
+        <div className="inputGroup">
+          <label>Experience Level</label>
 
-        <div
-          className="careerCard"
-          onClick={() => setSelected(roadmapData.ai)}
-        >
-          <h2>🤖 AI Engineer</h2>
-          <p>ML • Deep Learning • GenAI</p>
-          <button>View Roadmap</button>
-        </div>
-      </div>
-
-      {selected && (
-        <div className="roadmapBox">
-          <h1>{selected.title}</h1>
-
-          <div className="salary">
-            💰 Average Salary : {selected.salary}
-          </div>
-
-          <div className="section">
-            <h2>🟢 Beginner</h2>
-            <ul>
-              {selected.beginner.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="section">
-            <h2>🔵 Intermediate</h2>
-            <ul>
-              {selected.intermediate.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="section">
-            <h2>🟣 Advanced</h2>
-            <ul>
-              {selected.advanced.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="section">
-            <h2>🚀 Projects</h2>
-            <ul>
-              {selected.projects.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="section">
-            <h2>📚 Resources</h2>
-            <ul>
-              {selected.resources.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="section">
-            <h2>💼 Interview Preparation</h2>
-            <ul>
-              {selected.interview.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <button
-            className="closeBtn"
-            onClick={() => setSelected(null)}
+          <select
+            value={level}
+            onChange={(e) => setLevel(e.target.value)}
           >
-            Close
-          </button>
+            <option>Fresher</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </div>
+
+        <button
+          className="generateRoadmapBtn"
+          onClick={generateRoadmap}
+          disabled={loading}
+        >
+          {loading
+            ? "Generating Roadmap..."
+            : "🚀 Generate AI Roadmap"}
+        </button>
+
+      </section>
+
+      {loading && (
+        <div className="loadingBox">
+          <div className="loader"></div>
+
+          <h3>AI is creating your roadmap...</h3>
+
+          <p>
+            Analyzing skills, technologies and career requirements.
+          </p>
         </div>
       )}
+
+      {roadmap.length > 0 && (
+        <section className="roadmapResult">
+
+          <div className="resultHeader">
+            <h2>🎯 Your Personalized Roadmap</h2>
+
+            <p>
+              Roadmap for <strong>{role}</strong>
+            </p>
+          </div>
+
+          <div className="timeline">
+
+            {roadmap.map((item, index) => (
+              <div className="roadmapItem" key={index}>
+
+                <div className="timelineNumber">
+                  {index + 1}
+                </div>
+
+                <div className="roadmapContent">
+
+                  <span className="stageLabel">
+                    STEP {index + 1}
+                  </span>
+
+                  <h2>{item.stage}</h2>
+
+                  <div className="roadmapSection">
+
+                    <h3>🧠 Skills to Learn</h3>
+
+                    <div className="tagContainer">
+                      {item.skills?.map((skill, i) => (
+                        <span className="skillTag" key={i}>
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                  </div>
+
+                  <div className="roadmapSection">
+
+                    <h3>📚 Important Topics</h3>
+
+                    <ul>
+                      {item.topics?.map((topic, i) => (
+                        <li key={i}>{topic}</li>
+                      ))}
+                    </ul>
+
+                  </div>
+
+                  <div className="roadmapSection">
+
+                    <h3>💻 Projects</h3>
+
+                    <ul>
+                      {item.projects?.map((project, i) => (
+                        <li key={i}>{project}</li>
+                      ))}
+                    </ul>
+
+                  </div>
+
+                  <div className="outcomeBox">
+                    <strong>🎯 Expected Outcome</strong>
+
+                    <p>{item.outcome}</p>
+                  </div>
+
+                </div>
+
+              </div>
+            ))}
+
+          </div>
+
+        </section>
+      )}
+
     </div>
   );
 }

@@ -1,8 +1,11 @@
-// Load environment variables at the very top
+// Load environment variables first
 import dotenv from "dotenv";
 dotenv.config();
 
-  console.log("KEY:", process.env.GEMINI_API_KEY);
+//console.log(
+  //"GEMINI KEY:",
+ // process.env.GEMINI_API_KEY ? "LOADED ✅" : "MISSING ❌"
+//);
 
 import express from "express";
 import mongoose from "mongoose";
@@ -14,6 +17,7 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -21,23 +25,22 @@ app.get("/", (req, res) => {
   res.send("AI Powered Smart Career Learning Portal Backend is Running 🚀");
 });
 
-// Routes
+// Existing routes
 app.use("/api/resume", resumeRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api/user", userRoutes); 
+app.use("/api/user", userRoutes);
 
-// MongoDB connection
+// MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("MongoDB connected");
+    console.log("MongoDB connected ✅");
 
-    console.log("ROADMAP ROUTE LOADED");
-  
+    const PORT = process.env.PORT || 5000;
 
-    app.listen(process.env.PORT || 5000, () => {
-      console.log(`Server running on port ${process.env.PORT || 5000}`);
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT} 🚀`);
     });
   })
   .catch((err) => {
