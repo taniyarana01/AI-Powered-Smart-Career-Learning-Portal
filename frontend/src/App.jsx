@@ -2,9 +2,9 @@ import Resume from "./pages/Resume";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 import Dashboard from "./pages/Dashboard";
 import MyResumes from "./pages/MyResumes";
 import Profile from "./pages/Profile";
