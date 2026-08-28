@@ -345,11 +345,11 @@ ${question}
       <footer className="footer" id="contact">
         <h2>📞 Contact Us</h2>
 
-<p>📧 Email: support@ailearningportal.com</p>
+<p>📧 Email: support.ailearningportal.com@gmail.com</p>
 
-<p>📱 Phone: +91 9876543210</p>
+<p>📱 Phone: Not provided</p>
 
-<p>📍 Roorkee, Uttarakhand</p>
+<p>📍 India</p>
         <h3>AI Powered Smart Learning Portal</h3>
         <p>Empowering students through Artificial Intelligence.</p>
         <p>© 2026 All Rights Reserved</p>
